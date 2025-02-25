@@ -9,7 +9,7 @@ export default function TabLayout() {
                 headerStyle: {
                     backgroundColor: '#25292e',
                 },
-                headerShadowVisible: true,
+                headerShadowVisible: false,
                 headerTintColor: '#fff',
 
                 tabBarStyle: {
@@ -42,6 +42,24 @@ export default function TabLayout() {
                                 focused
                                     ? 'information-circle'
                                     : 'information-circle-outline'
+                            }
+                            color={color}
+                            size={24}
+                        />
+                    ),
+                }}
+            />
+
+            <Tabs.Screen
+                name="contact"
+                options={{
+                    title: 'Contact',
+                    tabBarIcon: ({ color, focused }) => (
+                        <Ionicons
+                            name={
+                                focused
+                                    ? 'chatbox-ellipses'
+                                    : 'chatbox-ellipses-outline'
                             }
                             color={color}
                             size={24}
