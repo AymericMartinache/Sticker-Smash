@@ -1,4 +1,4 @@
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, StatusBar } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
 
@@ -12,6 +12,7 @@ import EmojiPicker from '@/components/EmojiPicker';
 
 import EmojiList from '@/components/EmojiList';
 import EmojiSticker from '@/components/EmojiSticker';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const PlaceholderImage = require('@/assets/images/background-image.png');
 
@@ -58,7 +59,9 @@ export default function Index() {
 
     return (
         <View style={styles.container}>
-            <View style={styles.imageContainer}>
+            <StatusBar barStyle="light-content" backgroundColor="#25292e" />
+
+            <GestureHandlerRootView style={styles.imageContainer}>
                 <ImageViewer
                     imgSource={PlaceholderImage}
                     selectedImage={selectedImage}
@@ -66,7 +69,7 @@ export default function Index() {
                 {pickedEmoji && (
                     <EmojiSticker imageSize={40} stickerSource={pickedEmoji} />
                 )}
-            </View>
+            </GestureHandlerRootView>
             {showAppOptions ? (
                 <View style={styles.optionsContainer}>
                     <View style={styles.optionsRow}>
