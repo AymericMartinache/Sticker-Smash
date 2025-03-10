@@ -1,50 +1,107 @@
-# Welcome to your Expo app 👋
+# 📸 Sticker Smash - Ajoutez des stickers sur vos photos !
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Sticker Smash est une application développée avec **React Native** et **Expo**, permettant aux utilisateurs de sélectionner une image, d'ajouter des stickers et de sauvegarder leur création. Inspirée du tutoriel officiel **Expo**, cette application propose une expérience intuitive et amusante sur mobile et web.
 
-## Get started
+---
 
-1. Install dependencies
+## 🚀 **Fonctionnalités principales**
 
-   ```bash
-   npm install
-   ```
+1. **Sélection d'image depuis la galerie** 📷
+    - Permet de choisir une image depuis l'appareil.
 
-2. Start the app
+2. **Ajout d'emojis en stickers** 🎭
+    - Sélectionnez et positionnez un sticker emoji sur votre image.
 
-   ```bash
-    npx expo start
-   ```
+3. **Réinitialisation de l'édition** 🔄
+    - Effacez tous les stickers et recommencez depuis l'image de départ.
 
-In the output, you'll find options to open the app in a
+4. **Sauvegarde dans la galerie** 💾
+    - Capture l'image avec les stickers et l'enregistre dans la bibliothèque de l'appareil.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+5. **Interface fluide et intuitive** 🎨
+    - Navigation entre les pages (Accueil, À propos, Contact) avec **expo-router**.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## 🛠️ **Technologies utilisées**
 
-When you're ready, run:
+### 📱 **React Native & Expo**
+- Développement mobile rapide et efficace.
+- Support multi-plateforme : **iOS, Android**.
 
-```bash
-npm run reset-project
+### 📸 **Modules utilisés**
+- **expo-image-picker** : Sélection d'image depuis la galerie.
+- **expo-media-library** : Sauvegarde des images modifiées.
+- **react-native-view-shot** : Capture de l'écran contenant l'image et les stickers.
+- **react-native-gesture-handler** : Gestion des interactions utilisateur.
+- **expo-router** : Gestion de la navigation dans l'application.
+- **expo-status-bar** : Personnalisation de la barre d'état.
+
+---
+
+## 🏗️ **Structure du projet**
+
+| **Dossier/Fichier**       | **Description**                                         |
+|--------------------------|---------------------------------------------------------|
+| `/components/`           | Contient les composants réutilisables (boutons, images, stickers) |
+| `/assets/images/`        | Stocke les images utilisées dans l'application         |
+| `/app/index.tsx`         | Page principale de l'application                        |
+| `/app/about.tsx`         | Page "À propos"                                         |
+| `/app/contact.tsx`       | Page "Contact"                                         |
+| `/app/_layout.tsx`       | Gestion des écrans et navigation avec expo-router     |
+| `metro.config.js`        | Configuration de Metro Bundler pour Expo               |
+| `tsconfig.json`          | Configuration TypeScript                               |
+| `package.json`           | Définition des dépendances et scripts                 |
+
+---
+
+## 🚀 **Comment exécuter le projet**
+
+### Prérequis
+- **Node.js** et **pnpm** installés sur votre machine.
+- **Expo CLI** installé globalement :
+
+```sh
+npm install -g expo-cli
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Étapes d'installation
 
-## Learn more
+1. Clonez le projet :
 
-To learn more about developing your project with Expo, look at the following resources:
+```sh
+git clone https://github.com/votre-repo/sticker-smash.git
+cd sticker-smash
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+2. Installez les dépendances :
 
-## Join the community
+```sh
+pnpm install
+```
 
-Join our community of developers creating universal apps.
+3. Démarrez le projet :
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```sh
+expo start
+```
+
+4. Exécutez sur un émulateur ou un appareil :
+    - Appuyez sur **`a`** pour Android.
+    - Appuyez sur **`i`** pour iOS.
+    - Scannez le QR code avec **Expo Go**.
+
+
+
+---
+
+## 📌 **Contributeurs**
+
+Développé par **Aymeric** 👨‍💻. Basé sur le [tutoriel officiel Expo](https://docs.expo.dev/tutorial/introduction/).
+
+---
+
+## 📜 **Licence**
+
+Ce projet est sous licence **MIT**. Libre à vous de l'utiliser et de le modifier ! 🚀
+
