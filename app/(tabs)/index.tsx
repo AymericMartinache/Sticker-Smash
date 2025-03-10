@@ -1,11 +1,13 @@
 import { View, StyleSheet, StatusBar } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import { useState } from 'react';
-
+import * as MediaLibrary from 'expo-media-library';
+import { useState, useRef } from 'react';
+import { captureRef } from 'react-native-view-shot';
 import { type ImageSource } from 'expo-image';
 
 import Button from '@/components/Button';
 import ImageViewer from '@/components/ImageViewer';
+
 import IconButton from '@/components/IconButton';
 import CircleButton from '@/components/CircleButton';
 import EmojiPicker from '@/components/EmojiPicker';
@@ -25,6 +27,9 @@ export default function Index() {
     const [pickedEmoji, setPickedEmoji] = useState<ImageSource | undefined>(
         undefined
     );
+    const ImageRef = useRef<View>(null);
+
+    const [status, requestPermission] = MediaLibrary.usePermissions();
 
     const pickImageAsync = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -54,21 +59,42 @@ export default function Index() {
     };
 
     const onSaveImageAsync = async () => {
-        // we will implement this later
+        try {
+            const localUri = await captureRef(ImageRef, {
+                height: 440,
+                quality: 1,
+            });
+
+            await MediaLibrary.saveToLibraryAsync(localUri);
+            if (localUri) {
+                alert('Image saved !');
+            }
+        } catch (error) {
+            console.log(error);
+        }
     };
+
+    if (status === null) {
+        requestPermission();
+    }
 
     return (
         <View style={styles.container}>
             <StatusBar barStyle="light-content" backgroundColor="#25292e" />
 
             <GestureHandlerRootView style={styles.imageContainer}>
-                <ImageViewer
-                    imgSource={PlaceholderImage}
-                    selectedImage={selectedImage}
-                />
-                {pickedEmoji && (
-                    <EmojiSticker imageSize={40} stickerSource={pickedEmoji} />
-                )}
+                <View ref={ImageRef} collapsable={false}>
+                    <ImageViewer
+                        imgSource={PlaceholderImage}
+                        selectedImage={selectedImage}
+                    />
+                    {pickedEmoji && (
+                        <EmojiSticker
+                            imageSize={40}
+                            stickerSource={pickedEmoji}
+                        />
+                    )}
+                </View>
             </GestureHandlerRootView>
             {showAppOptions ? (
                 <View style={styles.optionsContainer}>
